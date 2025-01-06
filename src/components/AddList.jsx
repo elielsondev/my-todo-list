@@ -1,8 +1,7 @@
 import { PropTypes } from "prop-types";
 
 export default function AddList({ text, setText, itemCreate, setItemCreate }) {
-  
-    // A tarefa não pode ser salva com menos de 10 ou mais de 180 caracteres;
+  // A tarefa não pode ser salva com menos de 10 ou mais de 180 caracteres;
   const activeButton =
     text.length <= 10 || text.length >= 181
       ? { backgroundColor: "gray" }
@@ -12,6 +11,7 @@ export default function AddList({ text, setText, itemCreate, setItemCreate }) {
 
   const handleClick = (e) => {
     e.preventDefault();
+    
     setItemCreate([
       ...itemCreate,
       {
@@ -31,7 +31,7 @@ export default function AddList({ text, setText, itemCreate, setItemCreate }) {
   };
 
   return (
-    <form onKeyPress={handleClick}>
+    <form>
       <input
         className="outline-gray-400 p-2 m-1 border-2 border-solid rounded shadow-md"
         type="text"
@@ -49,7 +49,6 @@ export default function AddList({ text, setText, itemCreate, setItemCreate }) {
         onClick={handleClick}
         value="Adicionar"
       />
-      
       <p className="font-mono	text-sky-50">
         caracteres restantes: {180 - text.length}
       </p>
